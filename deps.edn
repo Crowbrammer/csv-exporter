@@ -1,0 +1,10 @@
+{:paths ["src"]
+ :deps {org.clojure/data.csv {:mvn/version "1.0.0"}}
+ :aliases {:uberdeps {:replace-deps {uberdeps/uberdeps {:mvn/version "1.1.0"}}
+                      :replace-paths []
+                      :main-opts ["-m" "uberdeps.uberjar"]}
+           :deploy {:extra-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
+                     :exec-fn deps-deploy.deps-deploy/deploy
+                     :exec-args {:installer :remote
+                                  :sign-releases? false ;; Ideally fix your gpg situation, unlike me.
+                                  :artifact "target/csv-exporter.jar"}}}}
